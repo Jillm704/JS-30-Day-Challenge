@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const p = document.querySelector('p');
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#bada55';
+      p.style.fontSize = '30px';
+    }
+    // Regular
+    console.log('Hello!');
+    // Interpolated
+    console.log('Hello, I am a %s string!', 'SILLY')
+    // Styled
+    console.log('%c I am great text', 'font-size: 20px; background: yellow;')
+    // warning!
+    console.warn('WARNING!')
+    // Error :|
+    console.error('ERROR!!!')
+    // Info
+    console.info('For your information...')
+    // Testing
+    console.assert(1 === 2, 'That is wrong... 1 !== 2')
+    // clearing
+    // console.clear();
+    // Viewing DOM Elements
+    console.dir(p);
+    // Grouping together
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}.`);
+        console.log(`${dog.name} is ${dog.age} years old.`);
+        console.log(`${dog.name} is ${dog.age * 7} human years old.`);
+        console.groupEnd(`${dog.name}`);
+    });
+    // counting
+    console.count('Word');
+    console.count('Word');
+    console.count('Wordie');
+    console.count('Wordie');
+    console.count('Wordie');
+    console.count('Word');
+    console.count('Word');
+    // timing
+    console.time('Fetching data');
+    fetch('https://api.github.com/users/jillm704')
+        .then(data => data.json())
+        .then(data => {
+            console.timeEnd('Fetching data');
+            console.log(data);
+        })
+  </script>
+</body>
+</html>

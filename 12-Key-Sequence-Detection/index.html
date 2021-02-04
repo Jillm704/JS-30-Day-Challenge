@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+
+<script>
+    const pressArr = [];
+    const secretCode = 'jillm';
+    window.addEventListener('keyup', (e) => {
+        console.log(e.key);
+        pressArr.push(e.key);
+        pressArr.splice(-secretCode.length - 1, pressArr.length - secretCode.length);
+        if(pressArr.join('').includes(secretCode)) {
+            console.log('You got it!');
+            cornify_add();
+        }
+        console.log(pressArr);
+    });
+</script>
+
+</body>
+</html>
